@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>100 моушн-пресетов × Higgsfield</title>
+<meta name="description" content="Библиотека из 100 гибридных моушн-пресетов: кидаешь клип в чат, подключаешь Higgsfield, выбираешь пресет или описываешь словами и получаешь готовый ролик.">
+<meta property="og:title" content="100 моушн-пресетов × Higgsfield">
+<meta property="og:description" content="Кинь клип в чат → подключи Higgsfield → выбери пресет или опиши → готовый ролик.">
+<meta property="og:image" content="media/011.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1B2130;      /* page */
+  --ink-2:#242B3C;    /* raised */
+  --line:#39415580;
+  --paper:#F1EEE6;    /* text */
+  --mute:#A9AEBD;
+  --lilac:#B9A8FF;    /* accent */
+  --lilac-d:#7D69E8;
+  --ok:#8FE3B8;
+  --r-s:6px; --r-l:18px;
+  --gut:clamp(16px,4vw,56px);
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--ink);color:var(--paper);font:400 17px/1.55 Onest,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--lilac);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1320px;margin:0 auto;padding:0 var(--gut)}
+h1,h2,h3{font-family:Unbounded,sans-serif;font-weight:700;letter-spacing:-.02em;line-height:1.02}
+h2{font-size:clamp(30px,4.6vw,60px);margin-bottom:22px}
+p.lead{font-size:clamp(18px,1.6vw,21px);color:var(--mute);max-width:62ch}
+section{padding:clamp(72px,10vw,140px) 0}
+
+/* ---------- hero: the wall of presets ---------- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden;padding:0}
+.wall{position:absolute;inset:-4% -2%;display:grid;grid-template-columns:repeat(8,1fr);gap:8px;transform:rotate(-4deg) scale(1.12);opacity:.55}
+.wall .col{display:flex;flex-direction:column;gap:8px;animation:drift 70s linear infinite}
+.wall .col:nth-child(even){animation-direction:reverse;animation-duration:85s}
+.wall img,.wall video{width:100%;border-radius:var(--r-s);display:block;background:var(--ink-2)}
+@keyframes drift{from{transform:translateY(0)}to{transform:translateY(-50%)}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#1B213000 10%,#1B2130cc 55%,var(--ink) 92%)}
+.hero .wrap{position:relative;z-index:2;padding-bottom:clamp(48px,8vh,96px);width:100%}
+.hero h1{font-size:clamp(64px,15vw,230px);font-weight:900;line-height:.86;letter-spacing:-.045em}
+.hero h1 .x{display:block;font-size:.34em;font-weight:500;letter-spacing:-.02em;margin-top:.25em;color:var(--lilac)}
+.flow{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:34px;font-size:clamp(16px,1.5vw,20px)}
+.flow li{list-style:none;display:flex;gap:10px;align-items:baseline}
+.flow b{font-family:Unbounded;font-weight:700;color:var(--lilac);font-size:.8em}
+.cta{display:inline-flex;gap:10px;margin-top:38px;padding:15px 26px;border-radius:999px;background:var(--paper);color:var(--ink);font-weight:600;text-decoration:none}
+.cta:hover{background:var(--lilac)}
+
+/* ---------- steps ---------- */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,2vw,28px);margin-top:48px}
+.step{border-top:2px solid var(--lilac);padding-top:20px}
+.step .n{font-family:Unbounded;font-weight:900;font-size:56px;color:var(--ink-2);-webkit-text-stroke:1.5px var(--lilac);line-height:1}
+.step h3{font-size:22px;margin:18px 0 10px}
+.step p{color:var(--mute);font-size:16px}
+
+/* ---------- anatomy ---------- */
+.anat{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(28px,5vw,80px);align-items:center;margin-top:40px}
+.stack{position:relative;aspect-ratio:9/16;max-height:640px;margin:0 auto;width:min(100%,360px);perspective:1200px}
+.stack .ly{position:absolute;inset:0;border-radius:var(--r-l);overflow:hidden;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.2,.8,.2,1);box-shadow:0 30px 60px #0006;border:1px solid var(--line)}
+.stack .ly img,.stack .ly video{width:100%;height:100%;object-fit:cover;display:block}
+.stack .ly span{position:absolute;left:14px;bottom:12px;font-size:13px;font-weight:600;background:#1B2130d9;padding:5px 10px;border-radius:999px}
+.stack.open .ly:nth-child(1){transform:translate3d(-26%,14%,-240px) rotateY(18deg)}
+.stack.open .ly:nth-child(2){transform:translate3d(-10%,6%,-120px) rotateY(18deg)}
+.stack.open .ly:nth-child(3){transform:translate3d(6%,-2%,0) rotateY(18deg)}
+.ly.plate img{filter:saturate(.45) brightness(.8)}
+.ly.depth{background:linear-gradient(180deg,#e9e6ff,#5b4bc7 55%,#120f2b);mix-blend-mode:normal}
+.ly.depth img{opacity:.55;filter:grayscale(1) contrast(1.6);mix-blend-mode:luminosity}
+.rows{display:grid;gap:4px}
+.row{display:grid;grid-template-columns:150px 1fr;gap:18px;padding:16px 0;border-bottom:1px solid var(--line)}
+.row h3{font-size:16px;font-weight:700;color:var(--lilac);padding-top:2px}
+.row p{color:var(--mute);font-size:16px}
+.row p strong{color:var(--paper);font-weight:600}
+
+/* ---------- higgsfield link ---------- */
+.diagram{display:flex;align-items:center;gap:14px;margin:44px 0 30px}
+.diagram .node{flex:1 1 0}
+.diagram .arrow{flex:0 0 36px}
+.node{background:var(--ink-2);border:1px solid var(--line);border-radius:var(--r-l);padding:18px 20px;min-width:190px}
+.node h3{font-size:16px;margin-bottom:6px}
+.node p{font-size:14px;color:var(--mute)}
+.node.hf{border-color:var(--lilac);box-shadow:0 0 0 4px #b9a8ff1f}
+.arrow{width:36px;height:2px;background:var(--lilac);position:relative}
+.arrow::after{content:"";position:absolute;right:-1px;top:-5px;border:6px solid transparent;border-left:8px solid var(--lilac);border-right:0}
+.note{font-size:14px;color:var(--mute);border-left:2px solid var(--lilac-d);padding:4px 0 4px 14px;max-width:70ch}
+.chat{margin-top:44px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:start}
+.bubble{background:var(--ink-2);border-radius:var(--r-l) var(--r-l) var(--r-l) 4px;padding:16px 18px;margin-bottom:12px;max-width:520px}
+.bubble.me{background:var(--lilac);color:var(--ink);border-radius:var(--r-l) var(--r-l) 4px var(--r-l);margin-left:auto}
+.bubble small{display:block;opacity:.7;font-size:12px;margin-bottom:4px}
+pre{background:#141925;border:1px solid var(--line);border-radius:var(--r-l);padding:18px 20px;font:13.5px/1.6 ui-monospace,Menlo,monospace;color:#d8d4ff;overflow:auto;max-height:440px}
+pre .k{color:var(--mute)} pre .s{color:var(--ok)}
+
+/* ---------- library ---------- */
+.libhead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:20px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin:34px 0 10px}
+.chip{border:1px solid var(--line);background:transparent;color:var(--paper);font:500 14px Onest;padding:8px 14px;border-radius:999px;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+.chip:hover{border-color:var(--lilac)}
+.famintro{color:var(--mute);min-height:1.6em;margin-bottom:22px;font-size:15px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:18px;grid-auto-flow:dense}
+.card{background:none;border:0;padding:0;color:inherit;text-align:left;cursor:pointer;font:inherit}
+.card.h{grid-column:span 2}
+.card .m{position:relative;border-radius:var(--r-s);overflow:hidden;background:var(--ink-2)}
+.card.v .m{aspect-ratio:9/16}.card.h .m{aspect-ratio:4/3}
+.card .m img,.card .m video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.card .m video{opacity:0;transition:opacity .3s}.card .m video.on{opacity:1}
+.card .t{display:flex;gap:10px;align-items:baseline;margin-top:10px}
+.card .t b{font-family:Unbounded;font-size:13px;color:var(--lilac)}
+.card .t span{font-weight:600;font-size:15px}
+.card .s{font-size:13px;color:var(--mute);margin-top:2px}
+.badge{position:absolute;top:8px;left:8px;font-size:11px;font-weight:600;background:#1B2130cc;color:var(--ok);padding:3px 8px;border-radius:999px}
+
+/* ---------- modal ---------- */
+dialog{border:0;padding:0;background:var(--ink-2);color:var(--paper);border-radius:var(--r-l);max-width:min(1100px,94vw);width:100%;max-height:92vh}
+dialog::backdrop{background:#0c0f17e0}
+.dlg{display:grid;grid-template-columns:auto minmax(0,1fr);gap:28px;padding:22px}
+.dlg video{display:block;border-radius:var(--r-s);max-height:84vh;max-width:100%;background:#000}
+.dlg.v video{width:min(44vh,46vw)}.dlg.h video{width:min(620px,58vw)}
+.dlg .info{overflow:auto;max-height:84vh;padding-right:6px}
+.dlg h3{font-size:28px;margin:4px 0 14px}
+.dlg dl{display:grid;gap:14px;font-size:15px}
+.dlg dt{color:var(--lilac);font-weight:600;font-size:13px}
+.dlg dd{margin:2px 0 0;color:#d9d6ce}
+.close{position:absolute;top:12px;right:14px;background:var(--ink);border:1px solid var(--line);color:var(--paper);width:38px;height:38px;border-radius:50%;font-size:18px;cursor:pointer}
+
+footer{padding:60px 0 80px;color:var(--mute);font-size:14px;border-top:1px solid var(--line)}
+footer p{max-width:75ch;margin-bottom:10px}
+
+@media (max-width:1100px){
+  .diagram{flex-direction:column;align-items:stretch}
+  .diagram .arrow{flex:0 0 26px;width:2px;height:26px;margin-left:30px}
+  .diagram .arrow::after{right:-5px;top:auto;bottom:-1px;border:6px solid transparent;border-top:8px solid var(--lilac);border-bottom:0}
+}
+@media (max-width:900px){
+  .steps{grid-template-columns:1fr 1fr}
+  .anat,.chat{grid-template-columns:1fr}
+  .arrow{width:2px;height:26px;margin-left:30px}
+  .arrow::after{right:-5px;top:auto;bottom:-1px;border:6px solid transparent;border-top:8px solid var(--lilac);border-bottom:0}
+  .wall{grid-template-columns:repeat(4,1fr)}
+  .wall .col:nth-child(n+5){display:none}
+  .dlg{grid-template-columns:1fr}
+  .dlg.v video,.dlg.h video{width:100%;max-height:60vh;object-fit:contain}
+}
+@media (max-width:520px){
+  .steps{grid-template-columns:1fr}
+  .row{grid-template-columns:1fr;gap:4px}
+  .grid{grid-template-columns:repeat(2,1fr);gap:12px}
+  .card.h{grid-column:span 2}
+}
+@media (prefers-reduced-motion:reduce){.wall .col{animation:none}.stack .ly{transition:none}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wall" id="wall" aria-hidden="true"></div>
+  <div class="wrap">
+    <h1>100 пресетов<span class="x">гибридного моушна × Higgsfield</span></h1>
+    <ol class="flow">
+      <li><b>1</b>Кидаешь клип в чат</li>
+      <li><b>2</b>Подключаешь Higgsfield</li>
+      <li><b>3</b>Выбираешь пресет или описываешь словами</li>
+      <li><b>4</b>Получаешь готовый ролик</li>
+    </ol>
+    <a class="cta" href="#library">Смотреть все 100</a>
+  </div>
+</header>
+
+<main>
+<section id="how">
+  <div class="wrap">
+    <h2>Как это работает для человека</h2>
+    <p class="lead">Ни таймлайна, ни After Effects. Весь монтаж — это разговор в чате, где Higgsfield подключён как инструмент.</p>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h3>Кинул клип</h3><p>Любое видео с телефона: говорящая голова, продукт, прогулка, тренировка. 15 секунд хватает.</p></div>
+      <div class="step"><div class="n">2</div><h3>Подключил Higgsfield</h3><p>Higgsfield работает в чате как подключение (MCP). Один раз авторизовался — дальше чат сам зовёт нужные инструменты.</p></div>
+      <div class="step"><div class="n">3</div><h3>Выбрал или описал</h3><p>Ткнул пресет из библиотеки или написал «сделай как новости, титры жёлтые». Чат сам подбирает пресет и меняет параметры.</p></div>
+      <div class="step"><div class="n">4</div><h3>Забрал ролик</h3><p>Готовое видео с титрами, графикой и звуком приходит обратно в чат. Не понравилось — правишь словами.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="inside" style="background:var(--ink-2)">
+  <div class="wrap">
+    <h2>Что внутри одного пресета</h2>
+    <p class="lead">Пресет — это не фильтр поверх видео. Это сцена, которая понимает клип: где человек, где стена, как едет камера. Поэтому титры прячутся за плечо, а графика стоит на полу.</p>
+    <div class="anat">
+      <div class="stack" id="stack" role="img" aria-label="Слои пресета: исходный клип, карта глубины и маска, готовый кадр с графикой">
+        <div class="ly plate"><img alt="" data-src="media/001.jpg"><span>Клип</span></div>
+        <div class="ly depth"><img alt="" data-src="media/001.jpg"><span>Глубина и маска</span></div>
+        <div class="ly"><video muted loop playsinline preload="none" data-src="media/001.mp4"></video><span>Готовый кадр</span></div>
+      </div>
+      <div class="rows">
+        <div class="row"><h3>Клип</h3><p>Видео пользователя. В этой библиотеке вместо него стоит свежая генерация <strong>Seedance 2.5</strong> — своя под каждый пресет, чтобы показать, на каком материале он раскрывается.</p></div>
+        <div class="row"><h3>Анализ</h3><p>Карта глубины, маска человека, трекинг точек и движение камеры. Считается на GPU один раз на клип.</p></div>
+        <div class="row"><h3>Графика кодом</h3><p>Все титры, интерфейсы, коллажи, плашки и 3D-вставки рисует код — кадр за кадром. В наборе <strong>22 стиля титров</strong>, свой UI-кит и свой рендер 3D.</p></div>
+        <div class="row"><h3>Звук</h3><p>Музыка из библиотеки без прав третьих лиц и звуковые эффекты на каждое событие в кадре. Громкость сведена под соцсети.</p></div>
+        <div class="row"><h3>Параметры</h3><p>Тексты, цвета, шрифты, скорость и стиль титров вынесены в один файл. Именно его чат и меняет, когда ты пишешь «сделай теплее» или «поменяй надпись».</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="higgsfield">
+  <div class="wrap">
+    <h2>Связка с Higgsfield</h2>
+    <p class="lead">Чат — это интерфейс. Higgsfield — руки: генерация, хранение медиа и запуск рендера. Пресеты живут рядом как отдельный движок.</p>
+    <div class="diagram">
+      <div class="node"><h3>Чат</h3><p>Claude или ChatGPT. Человек кидает клип и пишет, что хочет.</p></div>
+      <div class="arrow"></div>
+      <div class="node hf"><h3>Higgsfield MCP</h3><p>Принимает клип, отдаёт список пресетов, при надобности генерирует недостающие кадры.</p></div>
+      <div class="arrow"></div>
+      <div class="node"><h3>Движок пресетов</h3><p>Анализ клипа и рендер графики на GPU-ферме. Каждый ролик — свой короткий заказ.</p></div>
+      <div class="arrow"></div>
+      <div class="node"><h3>Готовый ролик</h3><p>Возвращается в чат и в медиатеку Higgsfield.</p></div>
+    </div>
+    <p class="note">Это схема для обсуждения. Сегодня работает так: клипы сгенерированы через Higgsfield, все 100 пресетов отрендерены нашим движком на арендованных RTX 4090. Сквозной путь «клип пользователя → пресет → ролик в чате» ещё нужно собрать как сервис.</p>
+
+    <div class="chat">
+      <div>
+        <p class="note" style="margin-bottom:16px">Пример того, как может выглядеть разговор.</p>
+        <div class="bubble me"><small>Ты</small>Вот клип с пробежки. Сделай как спортивную трансляцию, титры покороче.</div>
+        <div class="bubble"><small>Чат с Higgsfield</small>Взял пресет «Lower-Third Parade», сократил подписи до трёх слов и поставил акцент на финише. Ролик готов, 15 секунд.</div>
+        <div class="bubble me"><small>Ты</small>А можно цвет как у нашего бренда, синий?</div>
+        <div class="bubble"><small>Чат с Higgsfield</small>Поменял акцент на синий, перерендер только графики. Держи вторую версию.</div>
+      </div>
+      <div>
+        <pre id="params" aria-label="Параметры пресета Word Wall"></pre>
+        <p class="note" style="margin-top:14px">Настоящий файл параметров пресета 001 «Word Wall». Слова «поменяй надпись» или «сделай оранжевый синим» превращаются в правку этих строк.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="library" style="background:var(--ink-2)">
+  <div class="wrap">
+    <div class="libhead">
+      <div>
+        <h2>Библиотека</h2>
+        <p class="lead">10 семейств по 10 пресетов, по 15 секунд. Нечётные номера вертикальные 9:16, чётные горизонтальные 4:3. Нажми на ролик, чтобы открыть его со звуком и описанием.</p>
+      </div>
+    </div>
+    <div class="filters" id="fam" role="group" aria-label="Семейство"></div>
+    <div class="filters" id="asp" role="group" aria-label="Формат" style="margin-top:0"></div>
+    <p class="famintro" id="famintro"></p>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Собрано 28 октября 2026 за один день: каталог и ресёрч, 100 генераций Seedance 2.5 через Higgsfield, свой движок композитинга, титров и звука, рендер на облачной GPU-ферме.</p>
+    <p>Статус честно: <span style="color:var(--ok)">17 пресетов</span> прошли покадровую проверку (отмечены «проверен»). Остальные 83 — первый рендер без ревью, в них возможны мелкие огрехи.</p>
+  </div>
+</footer>
+
+<dialog id="dlg" aria-labelledby="dlgTitle">
+  <button class="close" id="dlgClose" aria-label="Закрыть">✕</button>
+  <div class="dlg" id="dlgBody"></div>
+</dialog>
+
+<script>
+const DATA = {"families": {"A": {"name": "Spatial", "sub": "graphics living in the room's depth", "from": "001"}, "B": {"name": "Caption Lab", "sub": "the caption system is the hero", "from": "011"}, "C": {"name": "Interface & Chat", "sub": "the product flow as UI", "from": "021"}, "D": {"name": "Transform & Reveal", "sub": "before/after mechanics", "from": "031"}, "E": {"name": "Editorial & Type", "sub": "print and typographic languages", "from": "041"}, "F": {"name": "Broadcast, News & Sport", "sub": "", "from": "051"}, "G": {"name": "Cinema & Documentary", "sub": "", "from": "061"}, "H": {"name": "Handmade & Collage", "sub": "", "from": "071"}, "I": {"name": "Retro-Digital & Subculture", "sub": "", "from": "081"}, "J": {"name": "Data, Map & 3D Objects", "sub": "", "from": "091"}}, "presets": [{"id": "001", "name": "Word Wall", "aspect": "V", "stars": 2, "family": "A", "style": "monochrome Swiss: black Inter Display Black on a grey concrete wall, one signal-orange word.", "hook": "at f0, a 900-px \"RAW.\" is already stamped on the wall behind her. She steps forward and the word slides *behind* her shoulder (occlusion reads instantly).", "angle": "STEP", "info": "The four steps swap on the wall as she walks: RAW → DROP → PICK → DONE. The last word turns orange as the plate behind it flips to the graded edit.", "code": "wall-plane fit from DA-V2 depth plus a homography track; matte occlusion; AO and contact darkening under the letter edges; light wrap; graded plate swap behind the last word.", "captions": ["Your raw clip.", "Drop it in the chat.", "Pick a preset or describe it.", "Get the finished edit."], "reviewed": false}, {"id": "002", "name": "Floor Sentence", "aspect": "H", "stars": 3, "family": "A", "style": "architectural real-estate minimal: extruded off-white serif letters lying on a polished floor, with reflections.", "hook": "the camera tilts down onto the first floor word, already lying there with a mirror reflection. Footsteps land on it.", "angle": "ONE", "info": "The single sentence \"make it feel like a film\" lies across the floor, letter by letter, as he walks along it. At the end of the walk the plate goes cinematic.", "code": "ground-plane solve (track points plus depth); path-traced extruded letters with floor gloss reflection and contact shadows; feet occlude letters through the matte; plate grade ramp.", "captions": ["Type one sentence.", "Make it feel like a film.", "Higgsfield edits the rest."], "reviewed": false}, {"id": "003", "name": "Orbit Rings", "aspect": "V", "stars": 2, "family": "A", "style": "neon violet cyber: emissive rings of preset thumbnails orbiting the head.", "hook": "at f0 a ring snaps tight around her head with a whoosh. Half the ring passes behind her, half in front.", "angle": "GAL", "info": "Three rings (Cinematic / Social / Brand) are preset categories. She points, a ring stops, and its card enlarges.", "code": "3D ring layout; per-pixel depth sort against the matte; emissive spill on the face (luma-masked add); restrained bloom.", "captions": ["Every preset orbits your clip.", "Pick a preset, or just describe it.", "Get the finished edit."], "reviewed": false}, {"id": "004", "name": "Palm Hologram", "aspect": "H", "stars": 3, "family": "A", "style": "cyan hologram: fresnel, scanlines, faint flicker.", "hook": "the phone in her palm flashes and a beam projects a 3D \"Connect Higgsfield\" chip above it within 1 s.", "angle": "CON", "info": "The chip toggles to \"Connected\". Three preset tiles rise from the beam.", "code": "phone-corner and hand track (CoTracker3); hologram shader (fresnel, scanline, chromatic offset ≤1 px); path-traced fog cone for the beam; finger occlusion; cyan spill on the hand.", "captions": ["Connect Higgsfield to your chat.", "Pick a preset, or describe it.", "Your finished edit is ready."], "reviewed": false}, {"id": "005", "name": "Desk Diorama", "aspect": "V", "stars": 3, "family": "A", "style": "claymorphic pastel 3D: soft matte clay objects on a real desk.", "hook": "four clay objects drop onto the desk with a squash bounce on the first beat: a clip block, a plug, a preset card and a play button.", "angle": "STEP", "info": "Each object lights up in turn as she taps it. The play button finally opens into the finished edit.", "code": "desk-plane solve; path-traced clay (subsurface-look roughness) with contact shadows matched to the window direction; hand occlusion; spring physics.", "captions": ["Drop your clip.", "Connect Higgsfield.", "Pick a preset.", "Hit play. It's edited."], "reviewed": false}, {"id": "006", "name": "Glass Partition", "aspect": "H", "stars": 2, "family": "A", "style": "corporate agency frosted glass: type etched on a glass wall in front of the presenter.", "hook": "a condensation-like streak wipes across the glass and leaves \"1 client clip\" etched there.", "angle": "UC-agency", "info": "+ `VAR`. \"1 client clip → 5 brand looks\". Five etched swatches behind which the plate re-grades.", "code": "glass-plane track; depth-driven refraction displacement behind the type; frosted blur; specular sheen sweeping with the camera.", "captions": ["One client clip.", "Five brand looks, one preset each.", "Same clip. Every brand."], "reviewed": false}, {"id": "007", "name": "Phone Portal", "aspect": "V", "stars": 3, "family": "A", "style": "hyper-pop colour: magenta, lime and cobalt cards.", "hook": "at f0 the phone screen in his outstretched hand bursts open like a portal and edited-video cards pour toward the lens.", "angle": "RES", "info": "\"Get a finished edit\". The cards are frames of his own clip, edited.", "code": "4-corner screen track; depth-correct card trajectories (cards occlude the arm and are occluded by it); motion blur; no particles.", "captions": ["Drop your clip in the chat.", "Pick a preset. Higgsfield cuts it.", "Get the finished edit."], "reviewed": false}, {"id": "008", "name": "Shelf Tags", "aspect": "H", "stars": 2, "family": "A", "style": "retail e-commerce: yellow paper price-tag cards on strings, with no prices.", "hook": "three tags flip in on three products, staggered, before 1 s.", "angle": "UC-ecom", "info": "Shop owner films her shelf; tags read \"Product reveal\", \"Drop day\", \"Restock\". These are preset names, demonstrating the gallery for shops.", "code": "SAM2 object masks plus point tracks; tag string as a catenary with a small swing; occlusion by products; shadows on the shelf.", "captions": ["Presets made for shops.", "Product reveal. Drop day. Restock.", "Pick one. Drop your clip.", "Your shelf, edited."], "reviewed": false}, {"id": "009", "name": "Stair Steps", "aspect": "V", "stars": 2, "family": "A", "style": "bold orange editorial sans on concrete stair risers.", "hook": "\"01\" punches into the first riser exactly as her foot lands. Footstep SFX.", "angle": "STEP", "info": "Risers carry 01 DROP / 02 CONNECT / 03 PICK OR DESCRIBE / 04 DONE.", "code": "per-riser homographies from the depth planes; legs occlude type; type gets the step's shadow; footstep-synced hits.", "captions": ["Pick a preset, or just describe it.", "Get the finished edit."], "reviewed": false}, {"id": "010", "name": "Projection Room", "aspect": "H", "stars": 3, "family": "A", "style": "projection-mapping light show on real walls and on the person.", "hook": "dark white room. The first wall ignites with a preset grid in a single beat.", "angle": "GAL", "info": "Walls cycle through preset families. Her body catches the projection, and the last projection is her own edited clip.", "code": "depth to wall-plane segmentation; projected textures with inverse-square falloff and surface normals; projection onto the person via the depth surface; spill on the floor.", "captions": ["Presets on every wall.", "Pick one, or describe it.", "One preset. Done."], "reviewed": false}, {"id": "011", "name": "Hormozi Punch", "aspect": "V", "stars": 1, "family": "B", "style": "", "hook": "first word \"STOP.\" lands at f0 with a 108% punch-in on his face.", "angle": "STEP", "info": "Spoken: \"Drop your clip. Connect Higgsfield. Pick a preset — or just say what you want. Done.\"", "code": "caption engine `hormozi` preset; keyword-driven punch-in and punch-out camera; emoji spring.", "captions": [], "reviewed": true}, {"id": "012", "name": "Beast Bounce", "aspect": "H", "stars": 1, "family": "B", "style": "", "hook": "two creators shout \"ONE SENTENCE?!\" and the words bounce in with a frame shake.", "angle": "ONE", "info": "Challenge format: \"We'll edit this with ONE sentence.\"", "code": "spring-bounce per word; beat-locked shake ≤6 px; whoosh and pop SFX.", "captions": [], "reviewed": true}, {"id": "013", "name": "Karaoke Pill", "aspect": "V", "stars": 1, "family": "B", "style": "", "hook": "pill and live waveform already moving at f0; the fill races the first word.", "angle": "UC-podcast", "info": "\"Turn your episode into clips. Drop it in, pick a preset.\"", "code": "karaoke sweep at sub-word timing; auto-layout pill; audio FFT bars.", "captions": [], "reviewed": true}, {"id": "014", "name": "Weight Shift", "aspect": "H", "stars": 1, "family": "B", "style": "", "hook": "\"quiet.\" grows from hairline to black weight on the first syllable.", "angle": "UC-brand", "info": "+ `CUS-F`. \"your brand font. your colours. every clip.\" Two font pairs swap live.", "code": "variable-font axis animation; per-word timing; plate grade from warm to brand-cool on \"colours\".", "captions": [], "reviewed": true}, {"id": "015", "name": "Behind-Head Captions", "aspect": "V", "stars": 2, "family": "B", "style": "", "hook": "\"YOUR WORDS\" fills the space behind him; he leans in and occludes it.", "angle": "CUS-T", "info": "\"Change any word.\" A caption word is struck through and retyped live: \"cool\" → \"cinematic\".", "code": "matte occlusion of captions; auto-size into head-space; edge light wrap.", "captions": [], "reviewed": true}, {"id": "016", "name": "Doc Subtitles", "aspect": "H", "stars": 1, "family": "B", "style": "", "hook": "cold open: \"[whoosh]\" tag and the line \"I stopped opening my editor.\" over a tight interview.", "angle": "TST", "info": "Sample persona \"Producer, sample agency\" describes her flow in her own words.", "code": "subtitle timing solver per Netflix and BBC rules; speaker labels; letterbox option.", "captions": [], "reviewed": true}, {"id": "017", "name": "Candy 3D Words", "aspect": "V", "stars": 3, "family": "B", "style": "", "hook": "the first word drops from the top and lands in her open palms with a bounce.", "angle": "SPD", "info": "\"slow… normal… FAST.\" The footage speed-ramps with the words.", "code": "text to mesh (opentype extrude); path-traced glossy candy; contact shadows; hand occlusion; speed ramp by frame interpolation (RIFE on the pod).", "captions": [], "reviewed": false}, {"id": "018", "name": "Tracked Speech Tags", "aspect": "H", "stars": 2, "family": "B", "style": "", "hook": "first tag pops from the asker's mouth: \"Do I need to know editing?\"", "angle": "FAQ", "info": "Q: \"Do I need to know editing?\" A: \"No. Just describe it.\" Q: \"Can I use my own clip?\" A: \"That's the point.\"", "code": "face track (MediaPipe); tail anchored; collision-free layout.", "captions": [], "reviewed": false}, {"id": "019", "name": "Fit-to-Width Stack", "aspect": "V", "stars": 2, "family": "B", "style": "", "hook": "three lines stack in 0.5 s and the wall starts rising.", "angle": "UC", "info": "list. \"creators / brands / agencies / shops / podcasts / musicians: one flow.\"", "code": "fit-width solver; stack physics; matte occlusion.", "captions": [], "reviewed": false}, {"id": "020", "name": "Palette Captions", "aspect": "H", "stars": 2, "family": "B", "style": "", "hook": "she says \"make it pink\" and swatches burst; the whole frame and the captions re-theme.", "angle": "CUS-C", "info": "Three palette changes by voice: pink, mono, sunset.", "code": "LUT-in-code plate re-grade synced with the caption theme; sticker spring.", "captions": [], "reviewed": true}, {"id": "021", "name": "Chat Drop", "aspect": "V", "stars": 2, "family": "C", "style": "", "hook": "a thumbnail of her clip flies from her phone into a chat bubble in 1 s.", "angle": "STEP", "info": "(canonical). Drop the clip → \"Connect Higgsfield\" chip → preset picker or a typed sentence → the finished video plays in the chat.", "code": "chat UI kit; her own plate as the thumbnail (recursion); tap ripples; card depth and shadow onto the wall.", "captions": [], "reviewed": false}, {"id": "022", "name": "Cursor Zoom Demo", "aspect": "H", "stars": 2, "family": "C", "style": "", "hook": "the camera zooms into a \"Send\" click at f12.", "angle": "STEP", "info": "in UI, in close-ups.", "code": "4-corner planar track; screen comp with glare and moiré-free downsample; virtual zoom camera on spring curves.", "captions": [], "reviewed": false}, {"id": "023", "name": "Notification Stack", "aspect": "V", "stars": 1, "family": "C", "style": "", "hook": "buzz plus the first banner, \"Your edit is ready\", drops at f0.", "angle": "VAR", "info": "Six banners, one per variant we actually render: 9:16, 1:1, 4:3, cinematic, captioned, mono.", "code": "stack physics; haptic SFX; frosted blur sampled from the plate.", "captions": [], "reviewed": false}, {"id": "024", "name": "Coverflow Presets", "aspect": "H", "stars": 2, "family": "C", "style": "", "hook": "the carousel spins in with all cards already playing.", "angle": "GAL", "info": "", "code": "N code looks of the plate as card textures; 3D carousel with floor reflections; matte so she sits in front.", "captions": [], "reviewed": false}, {"id": "025", "name": "Prompt Bar Wipe", "aspect": "V", "stars": 2, "family": "C", "style": "", "hook": "a blinking cursor in a huge bar at f0, already typing her spoken words.", "angle": "ONE", "info": "On Enter the bar sweeps down the frame and restyles the footage under it.", "code": "composer UI; bar-edge wipe with shadow; edited plate below.", "captions": [], "reviewed": false}, {"id": "026", "name": "Slider Panel", "aspect": "H", "stars": 2, "family": "C", "style": "", "hook": "a hue slider whips and the whole frame changes colour at f6.", "angle": "CUS-C/F/SPD", "info": "Colour, font and speed sliders, each live on the plate.", "code": "parameter binding; speed via RIFE interpolation; font morph.", "captions": [], "reviewed": false}, {"id": "027", "name": "Client DM", "aspect": "V", "stars": 1, "family": "C", "style": "", "hook": "incoming \"can you edit this by tonight?\" with a ping.", "angle": "UC-smallbiz/agency", "info": "Client sends a raw clip; the freelancer replies with the edit.", "code": "DM kit; the raw bubble shows the plate; the reply bubble shows our edit.", "captions": [], "reviewed": false}, {"id": "028", "name": "Gallery Scroll", "aspect": "H", "stars": 2, "family": "C", "style": "", "hook": "a motion-blurred scroll at f0 lands on a tile.", "angle": "GAL", "info": "Every tile is the same runner clip in a different preset; click zooms to full screen.", "code": "page renderer; inertial scroll; hover-to-play; zoom-to-full transition.", "captions": [], "reviewed": false}, {"id": "029", "name": "Voice Note", "aspect": "V", "stars": 1, "family": "C", "style": "", "hook": "the waveform jumps on her first word.", "angle": "ONE", "info": "(voice). \"make it look like a 90s music video.\" The waveform morphs into the edit.", "code": "real waveform; transcript timings; morph to video.", "captions": [], "reviewed": true}, {"id": "030", "name": "Process | Result Split", "aspect": "H", "stars": 2, "family": "C", "style": "", "hook": "both halves slide out from a centre seam at f0.", "angle": "STEP", "info": "+ `RES`.", "code": "synced split; chat UI; result edit.", "captions": [], "reviewed": false}, {"id": "031", "name": "Divider Wipe", "aspect": "V", "stars": 1, "family": "D", "style": "", "hook": "the divider is already moving at f0 and snaps.", "angle": "B/A", "info": "", "code": "synced divider wipe with handle; the edited side is our full comp.", "captions": [{"text": "Same clip.", "f0": 0, "f1": 52}, {"text": "Drop it in the chat.", "f0": 55, "f1": 107}, {"text": "Pick a preset.", "f0": 110, "f1": 163}, {"text": "Or just describe it.", "f0": 166, "f1": 219}], "reviewed": true}, {"id": "032", "name": "X-Ray Pass", "aspect": "H", "stars": 2, "family": "D", "style": "", "hook": "a scan bar flashes across at f0.", "angle": "HOW", "info": "Under the scan, the edit's skeleton: caption boxes, grade curves, cut points, sound waveform.", "code": "scan reveal; edge and wireframe from the plate; layer callouts.", "captions": [{"text": "See inside the edit.", "f0": -10, "f1": 46}, {"text": "Drop your clip in chat.", "f0": 48, "f1": 94}, {"text": "Pick a preset.", "f0": 96, "f1": 142}, {"text": "Captions. Grade. Cuts. Sound.", "f0": 144, "f1": 238}], "reviewed": false}, {"id": "033", "name": "Freeze Peel", "aspect": "V", "stars": 2, "family": "D", "style": "", "hook": "the action freezes mid-ollie at f8 with a flash.", "angle": "VAR", "info": "The frame peels like a sticker; the restyled version underneath resumes. This repeats twice.", "code": "freeze; page-curl mesh deformation with lighting and shadow.", "captions": [{"text": "Wait for it.", "f0": -10, "f1": 7}, {"text": "Pause.", "f0": 8, "f1": 23}, {"text": "Restyle.", "f0": 24, "f1": 40}, {"text": "Play.", "f0": 41, "f1": 80}], "reviewed": false}, {"id": "034", "name": "Nine Looks", "aspect": "H", "stars": 2, "family": "D", "style": "", "hook": "nine cells pop on the first beat.", "angle": "VAR", "info": "Cells flip to new presets on beats; one zooms to full.", "code": "nine code looks; grid flip transitions; beat sync.", "captions": [{"text": "One clip.", "f0": -26, "f1": 50}, {"text": "Nine looks.", "f0": 46, "f1": 100}, {"text": "Drop it in.", "f0": 100, "f1": 154}, {"text": "Pick a preset.", "f0": 154, "f1": 207}], "reviewed": false}, {"id": "035", "name": "Magnifier", "aspect": "V", "stars": 3, "family": "D", "style": "", "hook": "the lens slides in with a caustic glint.", "angle": "B/A", "info": "on details. Inside the lens: captions, grade, clean cut.", "code": "path-traced lens or shader refraction with the edited plate as texture; rim highlight.", "captions": [{"text": "Look closer.", "f0": -10, "f1": 55}, {"text": "Drop your clip in chat.", "f0": 57, "f1": 113}, {"text": "Pick a preset.", "f0": 115, "f1": 171}, {"text": "Or describe the vibe.", "f0": 173, "f1": 228}], "reviewed": false}, {"id": "036", "name": "Blinds", "aspect": "H", "stars": 2, "family": "D", "style": "", "hook": "slats flip at f0.", "angle": "HOW", "info": "Raw → captions → grade → motion → final.", "code": "slat rotation with lighting; staged renders.", "captions": [{"text": "Drop your clip.", "f0": 48, "f1": 94}, {"text": "Pick a preset.", "f0": 96, "f1": 143}, {"text": "Or describe it.", "f0": 145, "f1": 191}, {"text": "Finished edit.", "f0": 193, "f1": 239}], "reviewed": false}, {"id": "037", "name": "Mirror Twin", "aspect": "V", "stars": 2, "family": "D", "style": "", "hook": "the reflection flickers to colour at f0.", "angle": "B/A", "info": "", "code": "SAM2 mirror mask; edited version in the mirror; glass sheen.", "captions": [{"text": "Same moment.", "f0": -10, "f1": 44}, {"text": "Drop your clip in chat.", "f0": 46, "f1": 89}, {"text": "Pick a preset.", "f0": 91, "f1": 134}, {"text": "Or describe the mood.", "f0": 136, "f1": 180}], "reviewed": false}, {"id": "038", "name": "Paint Roller", "aspect": "H", "stars": 2, "family": "D", "style": "", "hook": "the roller enters with a squish.", "angle": "CUS-C", "info": "The roller colour is the chosen palette.", "code": "2.5D roller; wet-edge paint mask; texture.", "captions": [{"text": "Your clip.", "f0": 284, "f1": 321}, {"text": "Your colours.", "f0": 323, "f1": 359}], "reviewed": false}, {"id": "039", "name": "Ripple Drop", "aspect": "V", "stars": 2, "family": "D", "style": "", "hook": "a drop hits at f6.", "angle": "DROP", "info": "+ `B/A`.", "code": "ripple displacement; refraction; ring mask.", "captions": [{"text": "Drop your clip in the chat.", "f0": 34, "f1": 136}, {"text": "Pick a preset.", "f0": 139, "f1": 206}, {"text": "Or describe the mood.", "f0": 208, "f1": 275}, {"text": "Get the finished edit.", "f0": 278, "f1": 359}], "reviewed": false}, {"id": "040", "name": "Subject Lift", "aspect": "H", "stars": 3, "family": "D", "style": "", "hook": "the subject rises with a soft shadow at f6.", "angle": "VAR", "info": "Three code-built backgrounds: typographic poster, path-traced studio, gradient.", "code": "matte; path-traced backdrops; relight approximation.", "captions": [{"text": "Your clip.", "f0": -8, "f1": 37}, {"text": "Drop it in.", "f0": 39, "f1": 76}, {"text": "Pick a preset.", "f0": 78, "f1": 115}, {"text": "New world.", "f0": 117, "f1": 155}], "reviewed": false}, {"id": "041", "name": "Cover Story", "aspect": "V", "stars": 1, "family": "E", "style": "", "hook": "the masthead slams down and locks behind her head.", "angle": "UC-brand", "info": "\"Your brand, cover-ready\".", "code": "masthead behind the matte; cover-line autolayout; page turn to the next issue variant.", "captions": [], "reviewed": false}, {"id": "042", "name": "Swiss Grid", "aspect": "H", "stars": 1, "family": "E", "style": "", "hook": "grid lines draw in within 0.5 s.", "angle": "STEP", "info": "as numbered modules.", "code": "grid system; mask modules; kinetic numerals.", "captions": [], "reviewed": true}, {"id": "043", "name": "Brutalist Poster", "aspect": "V", "stars": 1, "family": "E", "style": "", "hook": "\"1\" fills the frame.", "angle": "STAT", "info": "\"1 clip / 1 sentence / 4 steps / 1 finished edit\".", "code": "hard-cut layout on the beat grid; subject matte between type layers.", "captions": [], "reviewed": false}, {"id": "044", "name": "Front Page", "aspect": "H", "stars": 2, "family": "E", "style": "", "hook": "the paper flips onto a table with a thud.", "angle": "", "info": "headline \"Editing, by describing it\".", "code": "halftone of the plate; 3D paper sheet with crease lighting.", "captions": [], "reviewed": false}, {"id": "045", "name": "Gold Hairline", "aspect": "V", "stars": 2, "family": "E", "style": "", "hook": "a hairline draws and splits to reveal \"Atelier\".", "angle": "UC-brand", "info": "+ `B/A`. Jewellery ring, raw to luxury edit.", "code": "hairlines; glint; serif masks; matte.", "captions": [], "reviewed": false}, {"id": "046", "name": "Fly-Through Letters", "aspect": "H", "stars": 2, "family": "E", "style": "", "hook": "the camera flies through the \"O\".", "angle": "ONE", "info": "The sentence is the hero; the footage shows inside the letters.", "code": "video-filled letter masks; depth-of-field type.", "captions": [], "reviewed": false}, {"id": "047", "name": "Bento Editorial", "aspect": "V", "stars": 2, "family": "E", "style": "", "hook": "tiles snap into the grid at f0.", "angle": "CUS-C/T/F", "info": "Tiles show colour, font and copy options.", "code": "bento solver with spring; crops of the plate.", "captions": [], "reviewed": false}, {"id": "048", "name": "Thermal Focus", "aspect": "H", "stars": 2, "family": "E", "style": "", "hook": "a blurred giant word snaps sharp.", "angle": "SPD", "info": "Slow, normal and fast presets.", "code": "luma-to-thermal palette map; blur ramps.", "captions": [], "reviewed": false}, {"id": "049", "name": "Match-Cut Word", "aspect": "V", "stars": 1, "family": "E", "style": "", "hook": "\"EDIT\" stays still while the world changes three times in 1 s.", "angle": "UC", "info": "montage: creator, brand, agency, shop, podcast.", "code": "match-cut layout; per-shot grade unify.", "captions": [], "reviewed": false}, {"id": "050", "name": "Pull Quote", "aspect": "H", "stars": 2, "family": "E", "style": "", "hook": "a giant “ falls in front of the subject, partly occluded.", "angle": "TST", "info": "(sample persona).", "code": "quote marks as depth layers.", "captions": [], "reviewed": false}, {"id": "051", "name": "Breaking Bar", "aspect": "V", "stars": 1, "family": "F", "style": "", "hook": "the red bar wipes in with an alarm sting.", "angle": "", "info": "launch. \"BREAKING: edit any clip by describing it\".", "code": "broadcast package; ticker; live clock.", "captions": [], "reviewed": false}, {"id": "052", "name": "Telestrator Replay", "aspect": "H", "stars": 2, "family": "F", "style": "", "hook": "a telestrator circle draws around the player.", "angle": "B/A", "info": "as an instant replay.", "code": "strokes tracked to the player; replay wipe.", "captions": [], "reviewed": false}, {"id": "053", "name": "Player Intro", "aspect": "V", "stars": 2, "family": "F", "style": "", "hook": "freeze plus a cutout slam with a flash.", "angle": "STAT", "info": "of the edit: \"Clip 15 s · Steps 4 · Sentences 1\".", "code": "cutout with edge glow; stat bars.", "captions": [], "reviewed": false}, {"id": "054", "name": "Weather Wall", "aspect": "H", "stars": 2, "family": "F", "style": "", "hook": "she swipes and the map flies in.", "angle": "STEP", "info": "as a week forecast: Mon drop, Tue connect…", "code": "animated isobars; person matte over the map.", "captions": [], "reviewed": false}, {"id": "055", "name": "Kill Feed", "aspect": "V", "stars": 1, "family": "F", "style": "", "hook": "\"RAW CLIP ✕ eliminated by PRESET\".", "angle": "STEP", "info": "as achievements.", "code": "overlay package.", "captions": [], "reviewed": false}, {"id": "056", "name": "Magic Wall", "aspect": "H", "stars": 2, "family": "F", "style": "", "hook": "a tap ripples and the wall wakes.", "angle": "UC", "info": "map. Categories light up; no numbers.", "code": "screen replace; hand-tracked touch ripples.", "captions": ["Every field.", "Tap yours.", "Drop your clip.", "Connect Higgsfield."], "reviewed": false}, {"id": "057", "name": "Lower-Third Parade", "aspect": "V", "stars": 1, "family": "F", "style": "", "hook": "the first bar snaps in with a light sweep.", "angle": "CUS-F/C", "info": "", "code": "parametric lower thirds.", "captions": [], "reviewed": true}, {"id": "058", "name": "Stream Overlay", "aspect": "H", "stars": 1, "family": "F", "style": "", "hook": "an alert pops with a sound.", "angle": "UC-streamer", "info": "VOD to clip.", "code": "alert animations.", "captions": [], "reviewed": true}, {"id": "059", "name": "Mission Countdown", "aspect": "V", "stars": 2, "family": "F", "style": "", "hook": "\"T–4\" huge with a beep.", "angle": "STEP", "info": "as T-4…LIFTOFF.", "code": "countdown type; screen glow spill on the face.", "captions": [], "reviewed": false}, {"id": "060", "name": "Infomercial", "aspect": "H", "stars": 1, "family": "F", "style": "", "hook": "starburst \"WAIT!\" at f0.", "angle": "VAR", "info": "\"But wait — there's more variants\".", "code": "starbursts; split variants.", "captions": [], "reviewed": false}, {"id": "061", "name": "Set Title", "aspect": "V", "stars": 2, "family": "G", "style": "", "hook": "a light leak reveals letters on the wall.", "angle": "UC-brand", "info": "film.", "code": "wall-plane title; window-frame shadow falls over the type.", "captions": ["Drop your clip in the chat.", "Connect Higgsfield.", "Ask for a prestige title.", "Get the finished film."], "reviewed": true}, {"id": "062", "name": "Trailer Slugs", "aspect": "H", "stars": 3, "family": "G", "style": "", "hook": "a BRAAAM hit and the first slug.", "angle": "", "info": "launch. \"ONE CLIP. ONE SENTENCE.\"", "code": "trailer cut timing; path-traced slugs.", "captions": ["Drop your clip in the chat.", "Connect Higgsfield. Describe the edit.", "Get the finished video back.", "Pick a preset, or just describe it."], "reviewed": false}, {"id": "063", "name": "Bass Cutout", "aspect": "V", "stars": 2, "family": "G", "style": "", "hook": "jagged bars slice the frame.", "angle": "STEP", "info": "as title cards.", "code": "shape animation; posterized silhouette.", "captions": [], "reviewed": true}, {"id": "064", "name": "Explainer Desk", "aspect": "H", "stars": 2, "family": "G", "style": "", "hook": "a highlighter swipes the key sentence.", "angle": "HOW", "info": "", "code": "paper texture; 2.5D parallax from depth.", "captions": [], "reviewed": false}, {"id": "065", "name": "Case File", "aspect": "V", "stars": 2, "family": "G", "style": "", "hook": "a lamp clicks on.", "angle": "B/A", "info": "as a mystery solved.", "code": "B/W grade; venetian shadows.", "captions": ["Suspect: one raw, flat clip.", "Evidence dropped in the chat.", "Higgsfield connected. Preset picked.", "The edit: finished."], "reviewed": false}, {"id": "066", "name": "Freeze Intro Cards", "aspect": "H", "stars": 2, "family": "G", "style": "", "hook": "a record scratch and freeze at f10.", "angle": "UC", "info": "roles: creator, brand manager, agency.", "code": "freeze; cutout; cards.", "captions": [], "reviewed": false}, {"id": "067", "name": "Storybook Chapters", "aspect": "V", "stars": 1, "family": "G", "style": "", "hook": "the card \"Chapter One: The Clip\" slides in.", "angle": "STEP", "info": "as chapters.", "code": "chapter cards.", "captions": [], "reviewed": false}, {"id": "068", "name": "Viewfinder Clap", "aspect": "H", "stars": 1, "family": "G", "style": "", "hook": "a clap at f8.", "angle": "", "info": "raw → finished.", "code": "edge-detect peaking; clap-synced transition.", "captions": ["Your raw clip.", "Drop it in the chat.", "Connect Higgsfield.", "Pick a preset or describe it."], "reviewed": true}, {"id": "069", "name": "End Credits", "aspect": "V", "stars": 1, "family": "G", "style": "", "hook": "the footage shrinks into a corner.", "angle": "HOW", "info": "\"Captions ……… Higgsfield\".", "code": "credits; picture-in-picture.", "captions": [], "reviewed": false}, {"id": "070", "name": "Rack Focus Type", "aspect": "H", "stars": 3, "family": "G", "style": "", "hook": "the rack pulls to the near word.", "angle": "", "info": "\"Pick a preset / or describe it\" at two depths.", "code": "depth-driven DOF.", "captions": [], "reviewed": false}, {"id": "071", "name": "Sticker Bomb", "aspect": "V", "stars": 1, "family": "H", "style": "", "hook": "a sticker slap.", "angle": "VAR", "info": "", "code": "matte-to-sticker outline; 12 fps boil.", "captions": [], "reviewed": false}, {"id": "072", "name": "Scrapbook Trip", "aspect": "H", "stars": 2, "family": "H", "style": "", "hook": "a polaroid drops and develops.", "angle": "UC-travel", "info": "", "code": "polaroid frames; handwriting.", "captions": [], "reviewed": false}, {"id": "073", "name": "Marker Notes", "aspect": "V", "stars": 1, "family": "H", "style": "", "hook": "a circle around the face plus \"this is raw\".", "angle": "STEP", "info": "annotations.", "code": "SVG pencil; boil.", "captions": [], "reviewed": true}, {"id": "074", "name": "Paper Diorama", "aspect": "H", "stars": 2, "family": "H", "style": "", "hook": "paper layers fold up.", "angle": "STEP", "info": "as paper scenes.", "code": "paper shader; layered shadows; 12 fps.", "captions": [], "reviewed": false}, {"id": "075", "name": "Torn Reveal", "aspect": "V", "stars": 2, "family": "H", "style": "", "hook": "a tear at f4.", "angle": "B/A", "info": "", "code": "procedural fibre tear edges.", "captions": [], "reviewed": false}, {"id": "076", "name": "Riso Zine", "aspect": "H", "stars": 2, "family": "H", "style": "", "hook": "ink layers slide into registration.", "angle": "CUS-C", "info": "as ink swaps.", "code": "riso separation; misregistration.", "captions": [], "reviewed": false}, {"id": "077", "name": "Ransom Note", "aspect": "V", "stars": 1, "family": "H", "style": "", "hook": "letters slap in one by one.", "angle": "ONE", "info": "", "code": "per-letter paper cards.", "captions": [], "reviewed": false}, {"id": "078", "name": "Chalkboard", "aspect": "H", "stars": 2, "family": "H", "style": "", "hook": "a chalk underline squeaks.", "angle": "UC-edu", "info": "+ `STEP`.", "code": "board plane; chalk shader; occlusion.", "captions": [], "reviewed": true}, {"id": "079", "name": "Pencil Roto", "aspect": "V", "stars": 2, "family": "H", "style": "", "hook": "the frame turns into a sketch at f6.", "angle": "B/A", "info": "in styles.", "code": "edge and stroke stylise; boil.", "captions": [], "reviewed": false}, {"id": "080", "name": "Corkboard", "aspect": "H", "stars": 2, "family": "H", "style": "", "hook": "a pin stab and string twang.", "angle": "STEP", "info": "connected.", "code": "catenary string; 2.5D board camera.", "captions": [], "reviewed": false}, {"id": "081", "name": "Liquid Chrome", "aspect": "V", "stars": 3, "family": "I", "style": "", "hook": "a chrome blob morphs into a word.", "angle": "", "info": "launch. \"presets, but make them yours\".", "code": "path-traced chrome with an environment map from the plate.", "captions": ["Drop your clip in the chat.", "Connect Higgsfield.", "Pick a preset, or describe it.", "Get the finished edit."], "reviewed": false}, {"id": "082", "name": "VHS Rewind", "aspect": "H", "stars": 1, "family": "I", "style": "", "hook": "a tracking glitch and \"PLAY\".", "angle": "B/A", "info": "via rewind.", "code": "VHS emulation (chroma bleed, head-switch noise).", "captions": ["Drop your clip in the chat.", "Connect Higgsfield.", "Pick a preset, or describe it.", "Get the finished edit."], "reviewed": false}, {"id": "083", "name": "Datamosh Melt", "aspect": "V", "stars": 3, "family": "I", "style": "", "hook": "the face melts into the edit at f5.", "angle": "VAR", "info": "/ `SPD`.", "code": "RAFT flow on the pod; pixel advection.", "captions": ["Drop your clip in the chat.", "Connect Higgsfield.", "Pick a preset, or describe it.", "Get the finished edit."], "reviewed": false}, {"id": "084", "name": "Life RPG", "aspect": "H", "stars": 1, "family": "I", "style": "", "hook": "\"QUEST ACCEPTED\" chime.", "angle": "STEP", "info": "as quests.", "code": "HUD; XP pops.", "captions": ["A raw clip appears in the chat!", "Higgsfield joins your party.", "Pick a preset, or describe it.", "Your finished edit is ready."], "reviewed": false}, {"id": "085", "name": "ASCII Terminal", "aspect": "V", "stars": 2, "family": "I", "style": "", "hook": "the footage turns into ASCII at f0.", "angle": "CON", "info": "", "code": "ASCII renderer.", "captions": ["Your clip, in the chat.", "Connect Higgsfield.", "Pick a preset, or describe it.", "Done. The edit is ready."], "reviewed": false}, {"id": "086", "name": "CRT Channels", "aspect": "H", "stars": 2, "family": "I", "style": "", "hook": "a click and a burst of static.", "angle": "GAL", "info": "as channels.", "code": "CRT screen replace; glow spill.", "captions": ["Every preset is a channel.", "Same clip. Flip through looks.", "Pick one, or describe your own.", "Get the finished edit."], "reviewed": false}, {"id": "087", "name": "Retro OS Wizard", "aspect": "V", "stars": 1, "family": "I", "style": "", "hook": "\"New clip detected\" pops with a ding.", "angle": "STEP", "info": "as a wizard.", "code": "retro window kit.", "captions": ["Drop your clip in the chat.", "Connect Higgsfield.", "Pick a preset, or describe it.", "Get the finished edit."], "reviewed": false}, {"id": "088", "name": "Neon Wall", "aspect": "H", "stars": 3, "family": "I", "style": "", "hook": "the neon buzz-flickers on.", "angle": "UC-music", "info": "", "code": "path-traced emissive tubes; spill.", "captions": ["Drop the gig clip in the chat.", "Connect Higgsfield.", "Pick a preset, or describe the vibe.", "Get the finished edit."], "reviewed": false}, {"id": "089", "name": "1-Bit Dither", "aspect": "V", "stars": 1, "family": "I", "style": "", "hook": "colour floods out of the dither.", "angle": "CUS-C", "info": "", "code": "dither; palette flood.", "captions": ["Drop your clip in the chat.", "Set your colours.", "Or describe them in one sentence.", "Get the finished edit."], "reviewed": false}, {"id": "090", "name": "Versus Screen", "aspect": "H", "stars": 2, "family": "I", "style": "", "hook": "\"VS\" slams with a shake.", "angle": "B/A", "info": "battle.", "code": "VS layout; portraits from the matte.", "captions": ["Drop your clip in the chat.", "Connect Higgsfield.", "Pick a preset, or describe it.", "Get the finished edit."], "reviewed": false}, {"id": "091", "name": "Route Line", "aspect": "V", "stars": 2, "family": "J", "style": "", "hook": "an earth zoom to a pin.", "angle": "UC-travel", "info": "", "code": "Natural Earth (public domain) map; route draw.", "captions": ["DROP CLIP IN CHAT", "CONNECT HIGGSFIELD", "ASK: ROUTE MAP", "GET THE EDIT"], "reviewed": false}, {"id": "092", "name": "Spec Callouts", "aspect": "H", "stars": 2, "family": "J", "style": "", "hook": "the first leader line snaps.", "angle": "HOW", "info": "features.", "code": "point tracks; occlusion.", "captions": ["Every edit has a spec.", "Clip in. Higgsfield connected.", "Preset — or one sentence.", "Finished edit out."], "reviewed": false}, {"id": "093", "name": "Liquid Glass Stats", "aspect": "V", "stars": 3, "family": "J", "style": "", "hook": "a glass \"4\" refracts the footage.", "angle": "STAT", "info": "", "code": "refraction.", "captions": ["Four steps. That's the whole edit.", "Drop one clip in the chat.", "Connect Higgsfield. Describe it once.", "Get the finished edit back."], "reviewed": false}, {"id": "094", "name": "Node Graph", "aspect": "H", "stars": 1, "family": "J", "style": "", "hook": "the first node snaps a wire.", "angle": "HOW", "info": "", "code": "bezier wires with pulses.", "captions": ["Your clip goes in.", "Higgsfield connects. Pick a preset —", "or just describe the look.", "A finished edit comes out."], "reviewed": false}, {"id": "095", "name": "Exploded Layers", "aspect": "V", "stars": 3, "family": "J", "style": "", "hook": "the frame bursts into a layer stack at f6.", "angle": "HOW", "info": "", "code": "path-traced glass sheets.", "captions": ["YOUR CLIP", "THE MOVE", "THE LOOK", "THE WORDS"], "reviewed": false}, {"id": "096", "name": "Timeline Collapse", "aspect": "H", "stars": 2, "family": "J", "style": "", "hook": "tracks scroll in chaos.", "angle": "", "info": "a manual timeline collapses to one sentence.", "code": "generic timeline kit.", "captions": ["This is manual editing.", "Or connect Higgsfield and just say it.", "Everything collapses into one edit.", "Finished. Sit back."], "reviewed": false}, {"id": "097", "name": "VU Meters", "aspect": "V", "stars": 2, "family": "J", "style": "", "hook": "VU needles slam.", "angle": "", "info": "measured `STAT`.", "code": "real measurements; gauges.", "captions": [], "reviewed": false}, {"id": "098", "name": "Constellations", "aspect": "H", "stars": 2, "family": "J", "style": "", "hook": "the first constellation connects.", "angle": "UC", "info": "", "code": "lines; sky matte.", "captions": ["Shot the night sky?", "Drop the clip in the chat.", "Connect Higgsfield.", "Pick a preset, or describe the look."], "reviewed": false}, {"id": "099", "name": "Iso City", "aspect": "V", "stars": 3, "family": "J", "style": "", "hook": "the city rises.", "angle": "GAL", "info": "", "code": "path-traced city; dive into the billboard.", "captions": ["Pick a look.", "Riso?", "Halftone?", "Thermal?"], "reviewed": false}, {"id": "100", "name": "Receipt Recap", "aspect": "H", "stars": 1, "family": "J", "style": "", "hook": "printer chatter.", "angle": "", "info": "recap of all 4 steps.", "code": "paper curl.", "captions": ["Here's your receipt.", "Pick a preset or describe it.", "No timeline required.", "Keep the edit."], "reviewed": false}]};
+const P = DATA.presets, F = DATA.families;
+const RU = {A:"Пространство",B:"Лаборатория титров",C:"Интерфейс и чат",D:"Превращения",E:"Редакционная типографика",F:"ТВ, новости и спорт",G:"Кино и документалка",H:"Ручная работа и коллаж",I:"Ретро-цифра",J:"Данные, карты и 3D"};
+const RUSUB = {A:"Графика живёт в глубине комнаты: за плечом, на полу, на стене.",B:"Главный герой — титры: 22 стиля и их тайминг под речь.",C:"Сам продукт как интерфейс: чат, плеер, кнопки, загрузка.",D:"До/после: шторки, маски, перекраска кадра.",E:"Языки печати: журнал, сетка, плакат, вёрстка.",F:"Эфирная графика: плашки, табло, бегущие строки.",G:"Киноязык: титры фильмов, хроника, дневник.",H:"Бумага, маркер, мел, вырезки и стикеры.",I:"VHS, пиксели, терминалы, ранний веб.",J:"Графики, карты и объёмные объекты в кадре."};
+const ANG = {GAL:"галерея пресетов","B/A":"до и после",ONE:"одна фраза",SPD:"скорость",VAR:"варианты",STAT:"факты",TST:"отзыв",STEP:"по шагам",HOW:"под капотом",FAQ:"вопросы",DROP:"загрузка",CON:"подключение",RES:"результат"};
+const ang = a => ANG[a] || (a.startsWith("CUS")?"кастомизация":a.startsWith("UC")?"сценарий: "+a.slice(3).toLowerCase():a);
+const $ = s => document.querySelector(s);
+
+/* hero wall: posters, a few live videos */
+(() => {
+  const wall = $("#wall"), cols = 8, ids = P.map(p => p.id);
+  for (let c = 0; c < cols; c++) {
+    const col = document.createElement("div"); col.className = "col";
+    const pick = ids.filter((_, i) => i % cols === c);
+    [...pick, ...pick].forEach((id, k) => {
+      const live = k < pick.length && (k + c) % 6 === 0 && c < 4;
+      const el = document.createElement(live ? "video" : "img");
+      if (live) Object.assign(el, {muted:true, loop:true, autoplay:true, playsInline:true, poster:`media/${id}.jpg`, src:`media/${id}.mp4`, preload:"metadata"});
+      else { el.src = `media/${id}.jpg`; el.loading = k < 3 ? "eager" : "lazy"; el.alt = ""; }
+      col.appendChild(el);
+    });
+    wall.appendChild(col);
+  }
+})();
+
+/* anatomy stack opens on view */
+const stack = $("#stack");
+stack.querySelectorAll("[data-src]").forEach(e => e.src = e.dataset.src);
+new IntersectionObserver(([e]) => { stack.classList.toggle("open", e.isIntersecting); const v = stack.querySelector("video"); e.isIntersecting ? v.play().catch(()=>{}) : v.pause(); }, {threshold:.45}).observe(stack);
+
+/* params */
+const p1 = {"name": "Word Wall", "copy": {"words": ["RAW.", "DROP", "PICK", "DONE."], "captions": ["Your raw clip.", "Drop it in the chat.", "Pick a preset or describe it.", "Get the finished edit."]}, "palette": {"bg": "#8A8A88", "fg": "#0B0B0B", "accent": "#FF5A1F", "text": "#FFFFFF"}, "fonts": {"display": "InterDisplay-Black", "text": "Inter-SemiBold"}, "speed": 1.0, "caption": {"preset": "wordpop", "zone": [540, 1190], "keywords": ["raw", "drop", "preset", "finished"]}};
+$("#params").innerHTML = JSON.stringify(p1, null, 2).replace(/&/g,"&amp;").replace(/</g,"&lt;")
+  .replace(/"([^"]+)":/g, '<span class="k">"$1"</span>:').replace(/: "([^"]*)"/g, ': <span class="s">"$1"</span>').replace(/^(\s+)"([^"]*)"(,?)$/gm, '$1<span class="s">"$2"</span>$3');
+
+/* library */
+let fam = "all", asp = "all";
+const famBox = $("#fam"), aspBox = $("#asp"), grid = $("#grid");
+const chip = (box, val, label, cur, set) => { const b = document.createElement("button"); b.className = "chip"; b.textContent = label; b.setAttribute("aria-pressed", val === cur); b.onclick = () => { set(val); render(); }; box.appendChild(b); };
+const io = new IntersectionObserver(es => es.forEach(e => {
+  const v = e.target.querySelector("video");
+  if (e.isIntersecting) { if (!v.src) v.src = v.dataset.src; v.play().then(() => v.classList.add("on")).catch(()=>{}); }
+  else v.pause();
+}), {rootMargin:"120px 0px", threshold:.25});
+function render() {
+  famBox.innerHTML = ""; aspBox.innerHTML = "";
+  chip(famBox, "all", "Все 100", fam, v => fam = v);
+  Object.keys(F).forEach(k => chip(famBox, k, RU[k], fam, v => fam = v));
+  [["all","Любой формат"],["V","Вертикальные 9:16"],["H","Горизонтальные 4:3"]].forEach(([v,l]) => chip(aspBox, v, l, asp, x => asp = x));
+  $("#famintro").textContent = fam === "all" ? "" : RUSUB[fam];
+  io.disconnect(); grid.innerHTML = "";
+  P.filter(p => (fam === "all" || p.family === fam) && (asp === "all" || p.aspect === asp)).forEach(p => {
+    const b = document.createElement("button");
+    b.className = "card " + p.aspect.toLowerCase();
+    b.setAttribute("aria-label", `${p.id} ${p.name}, открыть`);
+    b.innerHTML = `<div class="m"><img loading="lazy" alt="" src="media/${p.id}.jpg"><video muted loop playsinline preload="none" data-src="media/${p.id}.mp4"></video>${p.reviewed ? '<i class="badge">проверен</i>' : ""}</div>
+      <div class="t"><b>${p.id}</b><span>${p.name}</span></div><div class="s">${RU[p.family]} · ${ang(p.angle)}</div>`;
+    b.onclick = () => open(p);
+    grid.appendChild(b); io.observe(b);
+  });
+}
+render();
+
+/* modal */
+const dlg = $("#dlg"), body = $("#dlgBody");
+const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/\*([^*]+)\*/g,"<em>$1</em>").replace(/`([^`]+)`/g,"$1");
+function open(p) {
+  body.className = "dlg " + p.aspect.toLowerCase();
+  body.innerHTML = `<video controls autoplay playsinline src="media/${p.id}.mp4" poster="media/${p.id}.jpg"></video>
+    <div class="info"><b style="font-family:Unbounded;color:var(--lilac)">${p.id}</b><h3 id="dlgTitle">${p.name}</h3>
+    <dl>
+      <div><dt>Семейство</dt><dd>${RU[p.family]}. ${p.aspect === "V" ? "Вертикальный 9:16" : "Горизонтальный 4:3"}, 15 с. Сложность ${"★".repeat(p.stars)}</dd></div>
+      <div><dt>Стиль</dt><dd>${esc(p.style)}</dd></div>
+      <div><dt>Крючок в первую секунду</dt><dd>${esc(p.hook)}</dd></div>
+      <div><dt>Что рассказывает (${ang(p.angle)})</dt><dd>${esc(p.info)}</dd></div>
+      ${p.captions.length ? `<div><dt>Титры</dt><dd>${p.captions.map(esc).join(" / ")}</dd></div>` : ""}
+      <div><dt>Что делает код</dt><dd>${esc(p.code)}</dd></div>
+      <div><dt>Статус</dt><dd>${p.reviewed ? "Прошёл покадровую проверку." : "Первый рендер, без ревью."}</dd></div>
+    </dl></div>`;
+  dlg.showModal();
+}
+const shut = () => { body.querySelector("video")?.pause(); dlg.close(); };
+$("#dlgClose").onclick = shut;
+dlg.addEventListener("click", e => { if (e.target === dlg) shut(); });
+dlg.addEventListener("close", () => { body.innerHTML = ""; });
+</script>
+</body>
+</html>
